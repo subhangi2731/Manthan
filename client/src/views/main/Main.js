@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SpacingGrid(props) {
-
   const classes = useStyles();
   const { Classes, setClasses, user, UpdateClass } = props;
   const CreateClass = (newClass) => {
@@ -49,7 +48,6 @@ export default function SpacingGrid(props) {
   };
 
   const JoinClass = (classCode) => {
-    console.log(classCode)
     joinClass(user, Classes, setClasses, classCode);
   };
   return (

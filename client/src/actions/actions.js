@@ -41,34 +41,21 @@ export const getClasses = async (user, setClasses) => {
 };
 
 export const joinClass = async (user, Classes, setClasses, classCode) => {
-
   try {
-
     const Class = await api.getClass(classCode);
-
-    if (Object.keys(user).length) {
-
-      if (
-        Class.data.users.find((element) => {
-          return user.email === element;
-        })
-      ) {
-        alert("Already joined the class.");
-        window.location.href = window.location.origin;
-
-      } else {
-        const joinedClass = await api.joinClass(classCode, {
-          user: user.email,
-        });
-        setClasses([...Classes, joinedClass.data]);
-        window.location.href = window.location.origin;
-      }
+    if (
+      Class.data.users.find((element) => {
+        return user.email === element;
+      })
+    ) {
+      alert("Already joined the class.");
     } else {
-      alert("Please login to join class")
+      const joinedClass = await api.joinClass(classCode, {
+        user: user.email,
+      });
+      setClasses([...Classes, joinedClass.data]);
     }
-
   } catch (error) {
-
     alert("Class does not exist.");
   }
 };
