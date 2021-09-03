@@ -1,4 +1,5 @@
 import axios from 'axios';
+import ..Tests/Crypto
 import store from '../store';
 import { LOGOUT } from '../actions/types';
 axios.defaults.withCredentials = true;
